@@ -1,0 +1,53 @@
+// Common buttons : @Mixin function
+
+@mixin buttons($color, $background, $font) {
+  background: $background;
+  border: none;
+  font-family: $font;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  padding: 5px 40px;
+  border-radius: 5px;
+  color: $color;
+  box-shadow: $ShadowEffect;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  //padding: 10px;
+  z-index: 1000;
+
+  &.sticky {
+    background: #fff;
+    box-shadow: $ShadowEffect;
+    transition: all 200ms ease-in-out;
+  }
+}
+
+header .navbar .btn-login {
+  @include buttons(#fff, $SoftRed, $Rajdhani);
+  transition: all 300ms ease-in-out;
+  &:hover {
+    background: transparent;
+    border: 1px solid $SoftRed;
+    color: $SoftRed;
+  }
+}
+
+header .navbar .navbar-collapse .navbar-nav > a {
+  font-family: $Rajdhani;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: $GrayishBlue;
+  //@debug: all 300ms ease-in-out;
+  transition: color 300ms ease-in-out;
+
+  &:hover {
+    color: $SoftRed;
+  }
+}

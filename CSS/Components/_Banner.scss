@@ -1,0 +1,105 @@
+%displayed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: inherit;
+}
+
+// Function for Fonts
+@mixin fonts($fontName, $fontWeight, $size) {
+    font-family: $fontName;
+    font-weight: $fontWeight;
+    font-size: $size;
+    text-transform: uppercase;
+}
+
+// Funcition for Buttons : to avoid DRY (Don't repeat Yourself).
+@mixin buttons($color, $background, $font) {
+    background: $background;
+    border: none;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+    padding: 5px 40px;
+    border-radius: 5px;
+    color: $color;
+    box-shadow: $ShadowEffect;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin-top: 40px;
+    &::before {
+        content: "";
+        width: 550px;
+        height: 300px;
+        padding: 20px;
+        border-radius: 190px;
+        background: $SoftBlue;
+        position: absolute;
+        bottom: 150px;
+        right: -150px;
+        z-index: -1;
+    }
+    .banner-content {
+        max-width: 500px;
+        height: 100%;
+        margin-top: 4rem;
+        @extend %displayed;
+        flex-direction: column;
+        .banner-title {
+            @include fonts($RussOne, 700, 42px);
+            color: $VeryDarkBlue;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .banner-para {
+            @include fonts($Rajdhani, 500, 16px);
+            color: $GrayishBlue;
+            line-height: 25px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .banner-buttons .banner-btn1 {
+            @include buttons(#fff, $SoftBlue, $Montserrat);
+            padding: 12px 15px !important;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 350ms ease-in-out;
+            &:hover {
+                background: transparent;
+                border: 1px solid $SoftBlue;
+                color: $SoftBlue;
+                transform: scale(0.9);
+            }
+        }
+        .banner-buttons .banner-btn2 {
+            @include buttons($VeryDarkBlue, $SmothGray, $Montserrat);
+            padding: 12px 15px !important;
+            font-size: 13px !important;
+            font-weight: 500;
+            margin-left: 20px;
+            transition: all 350ms ease-in-out;
+            &:hover {
+                background: transparent;
+                border: 1px solid $VeryDarkBlue;
+                color: $VeryDarkBlue;
+                transform: scale(0.9);
+            }
+        }
+    }
+    .banner-image {
+        width: 100%;
+        position: relative;
+        img {
+            margin-right: 7rem;
+            position: absolute;
+            top: 2rem;
+            right: -5.9rem;
+        }
+    }
+}

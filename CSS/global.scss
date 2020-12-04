@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rajdhani&family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Turret+Road:wght@500&display=swap");
+@import "./Components/Variables";
+@import "./Components/Header";
+@import "./Components/Banner";
+@import "./Components/question";
+@import "./Components/Footer";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-size: $globalSize;
+}
+
+::selection {
+    background: $SoftBlue;
+    color: #fff;
+}
+
+body {
+    font-family: $Montserrat;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+a,
+a:before,
+a:after,
+a:active {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+%displayed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: inherit;
+}
+
+// Function for Fonts
+@mixin fonts($fontName,
+$fontWeight,
+$size) {
+    font-family: $fontName;
+    font-weight: $fontWeight;
+    font-size: $size;
+    text-transform: uppercase;
+}
+
+// Funcition for Buttons : to avoid DRY (Don't repeat Yourself).
+@mixin buttons($color,
+$background,
+$font) {
+    background: $background;
+    border: none;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+    padding: 5px 40px;
+    border-radius: 5px;
+    color: $color;
+    box-shadow: $ShadowEffect;
+}
+
+// Features section area
+.features-area {
+    height: 100vh;
+    .features-header {
+        //@extend %displayed;
+        .features-title {
+            @include fonts($RussOne,
+            700,
+            23px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .features-para {
+            @include fonts($Rajdhani,
+            500,
+            16px);
+            text-transform: uppercase;
+            line-height: 25px;
+            color: $GrayishBlue;
+        }
+    }
+    .features-body {
+        margin: 90px auto;
+        //margin-top: 50px;
+        .nav>.nav-item {
+            @include fonts($Rajdhani,
+            700,
+            17px);
+            text-transform: uppercase;
+            margin-left: 50px;
+            .nav-link {
+                color: $SoftBlue;
+                transition: all 300ms ease-in-out;
+                &:hover {
+                    color: $SoftRed;
+                }
+            }
+        }
+        .features-tabs {
+            margin-top: 5rem;
+            height: 90vh;
+            position: relative;
+            &::before {
+                content: "";
+                width: 650px;
+                height: 300px;
+                padding: 20px;
+                border-radius: 190px;
+                background: $SoftBlue;
+                position: absolute;
+                bottom: 200px;
+                left: -150px;
+                z-index: -1;
+            }
+            .tab-image {
+                width: 100%;
+                position: relative;
+                img {
+                    //margin-left: 7rem;
+                    position: absolute;
+                    top: -3rem;
+                    left: 3rem;
+                }
+            }
+            .tab-content {
+                margin-left: 10px;
+                width: 500px;
+                .title-tab {
+                    @include fonts($RussOne,
+                    600,
+                    30px);
+                    color: $VeryDarkBlue;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+                .para-tab {
+                    @include fonts($Rajdhani,
+                    500,
+                    15px);
+                    text-transform: uppercase;
+                    line-height: 25px;
+                    letter-spacing: 1px;
+                    color: $GrayishBlue;
+                    margin: 20px 0 20px 0;
+                }
+                .btn-info {
+                    @include buttons(#fff,
+                    $SoftBlue,
+                    $RussOne);
+                    padding: 12px 20px !important;
+                    font-size: 13px;
+                    font-weight: 500;
+                    transition: all 200ms ease-in-out;
+                    &:hover {
+                        background: transparent;
+                        color: $SoftBlue;
+                        border: 2px solid $SoftBlue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Downloads section area
+.downloads-area {
+    position: relative;
+    margin-top: 12rem;
+    height: 100vh;
+    .downloads-header {
+        margin: 3rem auto;
+        width: 500px;
+        text-align: center;
+        .header-title {
+            @include fonts($RussOne,
+            700,
+            26px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: $VeryDarkBlue;
+        }
+        .header-para {
+            @include fonts($Rajdhani,
+            500,
+            16px);
+            text-transform: uppercase;
+            line-height: 25px;
+            color: $GrayishBlue;
+        }
+    }
+    .product-card {
+        @extend %displayed;
+        //flex-wrap: wrap;
+        margin: auto;
+        padding: 30px;
+        box-shadow: $ShadowEffect;
+        flex-direction: column;
+        height: 370px;
+        width: 250px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 200ms ease-in-out;
+        &:hover {
+            transform: translateY(-20px);
+        }
+        .product-logo {
+            margin: 0 auto;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 2rem;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        .product-info {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            h2 {
+                @include fonts($RussOne,
+                500,
+                19px);
+                text-transform: uppercase;
+                color: $VeryDarkBlue;
+            }
+            p {
+                @include fonts($Rajdhani,
+                600,
+                16px);
+                text-transform: uppercase;
+                color: $GrayishBlue;
+            }
+        }
+        .dots {
+            @extend %displayed;
+            margin-top: 0rem;
+            .dot {
+                width: 5px;
+                height: 5px;
+                background: $GrayishBlue;
+                border-radius: 100%;
+                margin: 1rem;
+            }
+        }
+        .product-btn {
+            @include buttons(#fff,
+            $SoftBlue,
+            $RussOne);
+            //padding: 5px 70px !important;
+            padding: 11px;
+            width: 200px;
+            font-size: 12px;
+            font-weight: 500;
+            position: absolute;
+            bottom: 0.7rem;
+            left: 50%;
+            text-align: center;
+            transform: translateX(-50%);
+            &:hover {
+                background: transparent;
+                color: $SoftBlue;
+                border: 2px solid $SoftBlue;
+            }
+        }
+    }
+}
+
+// End Products area styling
+//START STYLING SUBSCRIBE AREA
+.subscribe-area {
+    height: 60vh;
+    background: $SoftBlue;
+    @extend %displayed;
+    .subscribe-content {
+        width: 100%;
+        @extend %displayed;
+        flex-direction: column;
+        span {
+            @include fonts($TurretRoad,
+            500,
+            21px);
+            text-transform: uppercase;
+            color: #FFF;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            @include fonts($RussOne,
+            700,
+            40px);
+            text-transform: uppercase;
+            color: #FFF;
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 0 14rem;
+            &::first-letter {
+                font-size: 4.3rem;
+                color: $SoftRed;
+            }
+        }
+        form>input[type='email'] {
+            padding: 10px;
+            margin-left: 10px;
+            width: 400px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            @include fonts($RussOne,
+            700,
+            14px);
+            text-transform: uppercase;
+            color: $GrayishBlue;
+        }
+        form>.subscribe-btn {
+            @include buttons(#FFF,
+            $SoftRed,
+            $RussOne);
+            padding: 10px;
+            width: 150px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 20px;
+            transition: all 200ms ease-in-out;
+            &:hover {
+                background: #FFF;
+                //border: 2px solid $SoftRed;
+                color: $SoftRed;
+            }
+        }
+    }
+}
+
+// END STYLING SUBSCRIBE AREA
